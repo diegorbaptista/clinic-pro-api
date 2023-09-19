@@ -32,7 +32,7 @@ public record CreateDoctorDTO(
         AddressDTO address) {
 
     public Doctor toEntity() {
-        return new Doctor(null, name, email, phone, registrationCode, specialty, address.toEntity());
+        return new Doctor(null, name, email, phone, registrationCode, specialty, address.toEntity(), true);
     }
 
 }
