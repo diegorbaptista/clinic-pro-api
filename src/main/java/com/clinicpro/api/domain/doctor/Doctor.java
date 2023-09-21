@@ -4,6 +4,7 @@ import com.clinicpro.api.application.dto.AddressDTO;
 import com.clinicpro.api.domain.address.Address;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity(name = "doctor")
 @Table(name = "doctors")
+@EqualsAndHashCode(of= "id")
 public class Doctor {
 
     @Id()
