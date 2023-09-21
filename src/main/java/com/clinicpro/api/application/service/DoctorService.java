@@ -1,9 +1,12 @@
 package com.clinicpro.api.application.service;
 
 import com.clinicpro.api.application.dto.CreateDoctorDTO;
+import com.clinicpro.api.application.dto.DoctorDetailDTO;
 import com.clinicpro.api.application.dto.ListDoctorDTO;
 import com.clinicpro.api.application.dto.UpdateDoctorDTO;
+import com.clinicpro.api.application.mapper.DoctorDetailMapper;
 import com.clinicpro.api.application.mapper.ListDoctorMapper;
+import com.clinicpro.api.domain.doctor.Doctor;
 import com.clinicpro.api.domain.errors.DoctorNotFoundException;
 import com.clinicpro.api.repositories.DoctorRepository;
 import jakarta.transaction.Transactional;
@@ -19,13 +22,19 @@ public class DoctorService {
     private DoctorRepository repository;
 
     @Transactional
-    public void create(CreateDoctorDTO dto) {
-        this.repository.save(dto.toEntity());
+    public Doctor create(CreateDoctorDTO dto) {
+        var doctor = dto.toEntity();
+        this.repository.save(doctor);
+        return doctor;
     }
 
     public Page<ListDoctorDTO> list(Pageable pagination) {
-        var mapper = new ListDoctorMapper();
-        return repository.findAllByActiveTrue(pagination).map(mapper);
+        return repository.findAllByActiveTrue(pagination).map(new ListDoctorMapper());
+    }
+
+    public DoctorDetailDTO get(String doctorID) {
+        return repository.findByIdAndActiveTrue(doctorID).map(new DoctorDetailMapper())
+                .orElseThrow(DoctorNotFoundException::new);
     }
 
     @Transactional

@@ -1,6 +1,8 @@
 package com.clinicpro.api.domain.errors;
 
-public class DoctorNotFoundException extends RuntimeException {
+import jakarta.persistence.EntityNotFoundException;
+
+public class DoctorNotFoundException extends EntityNotFoundException {
 
     public DoctorNotFoundException() {
         super("Doctor not found");
