@@ -1,4 +1,4 @@
-package com.clinicpro.api.application.dto;
+package com.clinicpro.api.application.dto.doctor;
 
 import com.clinicpro.api.domain.doctor.Specialty;
 

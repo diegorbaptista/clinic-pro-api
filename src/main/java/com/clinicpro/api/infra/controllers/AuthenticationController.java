@@ -1,4 +1,4 @@
-package com.clinicpro.api.infra;
+package com.clinicpro.api.infra.controllers;
 
 import com.clinicpro.api.application.dto.AuthenticationDTO;
 import jakarta.validation.Valid;

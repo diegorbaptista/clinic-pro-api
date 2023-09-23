@@ -1,6 +1,8 @@
 package com.clinicpro.api.infra.errors;
 
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -21,6 +23,19 @@ public class CustomExceptionHandler {
     public ResponseEntity<List<CustomValidationError>> handle400(MethodArgumentNotValidException exception) {
         var errors = exception.getFieldErrors();
         return ResponseEntity.badRequest().body(errors.stream().map(CustomValidationError::new).toList());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<CustomErrorMessage> handle400(IllegalArgumentException exception) {
+        return ResponseEntity.badRequest().body(new CustomErrorMessage(exception.getMessage()));
+    }
+
+    @ExceptionHandler(EntityExistsException.class)
+    public ResponseEntity<CustomErrorMessage> handle422(EntityExistsException exception) {
+        return ResponseEntity.unprocessableEntity().body(new CustomErrorMessage(exception.getMessage()));
+    }
+
+    public record CustomErrorMessage(String message) {
     }
 
     public record CustomValidationError(String field, String message) {

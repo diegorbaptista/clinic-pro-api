@@ -1,9 +1,9 @@
 package com.clinicpro.api.application.service;
 
-import com.clinicpro.api.application.dto.CreateDoctorDTO;
-import com.clinicpro.api.application.dto.DoctorDetailDTO;
-import com.clinicpro.api.application.dto.ListDoctorDTO;
-import com.clinicpro.api.application.dto.UpdateDoctorDTO;
+import com.clinicpro.api.application.dto.doctor.CreateDoctorDTO;
+import com.clinicpro.api.application.dto.doctor.DoctorDetailDTO;
+import com.clinicpro.api.application.dto.doctor.ListDoctorDTO;
+import com.clinicpro.api.application.dto.doctor.UpdateDoctorDTO;
 import com.clinicpro.api.application.mapper.DoctorDetailMapper;
 import com.clinicpro.api.application.mapper.ListDoctorMapper;
 import com.clinicpro.api.domain.doctor.Doctor;

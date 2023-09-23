@@ -1,5 +1,6 @@
-package com.clinicpro.api.application.dto;
+package com.clinicpro.api.application.dto.doctor;
 
+import com.clinicpro.api.application.dto.AddressDTO;
 import com.clinicpro.api.domain.doctor.Specialty;
 import com.clinicpro.api.domain.doctor.Doctor;
 import jakarta.validation.Valid;

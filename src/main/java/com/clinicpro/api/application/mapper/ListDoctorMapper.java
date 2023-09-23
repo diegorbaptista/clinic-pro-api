@@ -1,6 +1,6 @@
 package com.clinicpro.api.application.mapper;
 
-import com.clinicpro.api.application.dto.ListDoctorDTO;
+import com.clinicpro.api.application.dto.doctor.ListDoctorDTO;
 import com.clinicpro.api.domain.doctor.Doctor;
 
 import java.util.function.Function;

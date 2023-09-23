@@ -1,9 +1,8 @@
 package com.clinicpro.api.application.mapper;
 
-import com.clinicpro.api.application.dto.DoctorDetailDTO;
+import com.clinicpro.api.application.dto.doctor.DoctorDetailDTO;
 import com.clinicpro.api.domain.doctor.Doctor;
 
-import javax.print.Doc;
 import java.util.function.Function;
 
 public class DoctorDetailMapper implements Function<Doctor, DoctorDetailDTO> {
