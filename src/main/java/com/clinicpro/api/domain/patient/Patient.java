@@ -22,7 +22,6 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column
     private String name;
 
     @Embedded
@@ -33,6 +32,8 @@ public class Patient {
 
     @Embedded
     private CPF cpf;
+
+    private boolean active;
 
     @Embedded
     private Address address;

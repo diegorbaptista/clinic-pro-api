@@ -25,7 +25,7 @@ public record CreatePatientDTO (
 ) {
 
     public Patient toEntity() {
-        return new Patient(null, name, new Email(email), new Phone(phone), new CPF(cpf), new AddressMapper().toEntity(address));
+        return new Patient(null, name, new Email(email), new Phone(phone), new CPF(cpf), true, new AddressMapper().toEntity(address));
     }
 
 }
