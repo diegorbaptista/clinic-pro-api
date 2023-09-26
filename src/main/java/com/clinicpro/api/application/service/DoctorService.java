@@ -4,6 +4,7 @@ import com.clinicpro.api.application.dto.doctor.CreateDoctorDTO;
 import com.clinicpro.api.application.dto.doctor.DoctorDetailDTO;
 import com.clinicpro.api.application.dto.doctor.ListDoctorDTO;
 import com.clinicpro.api.application.dto.doctor.UpdateDoctorDTO;
+import com.clinicpro.api.application.mapper.AddressMapper;
 import com.clinicpro.api.application.mapper.DoctorDetailMapper;
 import com.clinicpro.api.application.mapper.ListDoctorMapper;
 import com.clinicpro.api.domain.doctor.Doctor;
@@ -40,7 +41,7 @@ public class DoctorService {
     @Transactional
     public void update(String doctorID, UpdateDoctorDTO data) {
         var doctor = this.repository.findById(doctorID).orElseThrow(DoctorNotFoundException::new);
-        doctor.update(data.name(), data.phone(), data.address());
+        doctor.update(data.name(), data.phone(), new AddressMapper().toEntity(data.address()));
     }
 
     @Transactional

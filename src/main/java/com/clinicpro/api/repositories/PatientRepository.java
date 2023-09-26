@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PatientRepository extends JpaRepository<Patient, String> {
 
-    boolean existsByCpfValue(String cpf);
+    boolean existsByCpfValueOrEmailValue(String cpf, String email);
 }

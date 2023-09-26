@@ -1,6 +1,5 @@
 package com.clinicpro.api.domain.doctor;
 
-import com.clinicpro.api.application.dto.AddressDTO;
 import com.clinicpro.api.domain.address.Address;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -41,7 +40,7 @@ public class Doctor {
     @Column
     private boolean active;
 
-    public void update(String name, String phone, AddressDTO address) {
+    public void update(String name, String phone, Address address) {
         if ((name != null) && (!name.trim().isEmpty())) {
             this.name = name;
         }
@@ -49,7 +48,7 @@ public class Doctor {
             this.phone = phone;
         }
         if (address != null) {
-            this.address.update(address.toEntity());
+            this.address.update(address);
         }
     }
 

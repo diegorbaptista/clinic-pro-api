@@ -1,6 +1,7 @@
 package com.clinicpro.api.application.dto.doctor;
 
 import com.clinicpro.api.application.dto.AddressDTO;
+import com.clinicpro.api.application.mapper.AddressMapper;
 import com.clinicpro.api.domain.doctor.Specialty;
 import com.clinicpro.api.domain.doctor.Doctor;
 import jakarta.validation.Valid;
@@ -33,7 +34,7 @@ public record CreateDoctorDTO(
         AddressDTO address) {
 
     public Doctor toEntity() {
-        return new Doctor(null, name, email, phone, registrationCode, specialty, address.toEntity(), true);
+        return new Doctor(null, name, email, phone, registrationCode, specialty, new AddressMapper().toEntity(address), true);
     }
 
 }

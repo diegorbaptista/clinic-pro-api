@@ -12,4 +12,13 @@ public class AddressMapper implements Function<Address, AddressDTO> {
                 address.getNeighborhood(), address.getCity(), address.getState(),
                 address.getZipCode(), address.getComplement());
     }
+
+    public Address toEntity(AddressDTO data) {
+        if (data != null) {
+            return new Address(data.address(), data.number(), data.neighborhood(), data.city(),
+                    data.state(), data.zipCode(), data.complement());
+        }
+        return null;
+    }
+
 }

@@ -18,7 +18,4 @@ public record AddressDTO (
         @Pattern(regexp = "\\d{8}")
         String zipCode,
         String complement) {
-    public Address toEntity() {
-        return new Address(address, number, neighborhood, city, state, zipCode, complement);
-    }
 }

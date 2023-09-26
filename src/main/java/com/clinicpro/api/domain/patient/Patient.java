@@ -37,4 +37,17 @@ public class Patient {
     @Embedded
     private Address address;
 
+    public void update(String name, String phone, Address address) {
+        if ((name != null) && (!name.trim().isEmpty())) {
+            this.name = name;
+        }
+
+        if ((phone != null) && (!phone.trim().isEmpty())) {
+            this.phone = new Phone(phone);
+        }
+
+        if (address != null) {
+            this.address.update(address);
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.clinicpro.api.application.dto.patient;
 
 import com.clinicpro.api.application.dto.AddressDTO;
+import com.clinicpro.api.application.mapper.AddressMapper;
 import com.clinicpro.api.domain.CPF;
 import com.clinicpro.api.domain.Email;
 import com.clinicpro.api.domain.Phone;
@@ -24,7 +25,7 @@ public record CreatePatientDTO (
 ) {
 
     public Patient toEntity() {
-        return new Patient(null, name, new Email(email), new Phone(phone), new CPF(cpf), address.toEntity());
+        return new Patient(null, name, new Email(email), new Phone(phone), new CPF(cpf), new AddressMapper().toEntity(address));
     }
 
 }
