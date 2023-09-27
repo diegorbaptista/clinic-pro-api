@@ -38,6 +38,11 @@ public class Patient {
     @Embedded
     private Address address;
 
+    public void inactivate() {
+        if (this.active) {
+            this.active = false;
+        }
+    }
     public void update(String name, String phone, Address address) {
         if ((name != null) && (!name.trim().isEmpty())) {
             this.name = name;
@@ -51,4 +56,5 @@ public class Patient {
             this.address.update(address);
         }
     }
+
 }
