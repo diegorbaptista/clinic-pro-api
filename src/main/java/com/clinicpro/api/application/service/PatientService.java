@@ -8,7 +8,7 @@ import com.clinicpro.api.application.mapper.AddressMapper;
 import com.clinicpro.api.application.mapper.ListPatientMapper;
 import com.clinicpro.api.application.mapper.PatientDetailMapper;
 import com.clinicpro.api.domain.errors.PatientNotFoundException;
-import com.clinicpro.api.repositories.PatientRepository;
+import com.clinicpro.api.infra.repositories.PatientRepository;
 import jakarta.persistence.EntityExistsException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -16,8 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor

@@ -1,6 +1,6 @@
 package com.clinicpro.api.infra.security;
 
-import com.clinicpro.api.repositories.UserRepository;
+import com.clinicpro.api.infra.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

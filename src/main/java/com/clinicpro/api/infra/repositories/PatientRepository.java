@@ -1,4 +1,4 @@
-package com.clinicpro.api.repositories;
+package com.clinicpro.api.infra.repositories;
 
 import com.clinicpro.api.domain.patient.Patient;
 import org.springframework.data.domain.Page;
