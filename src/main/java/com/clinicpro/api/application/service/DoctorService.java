@@ -11,30 +11,38 @@ import com.clinicpro.api.domain.doctor.Doctor;
 import com.clinicpro.api.domain.errors.DoctorNotFoundException;
 import com.clinicpro.api.repositories.DoctorRepository;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class DoctorService {
 
     @Autowired
-    private DoctorRepository repository;
+    private final DoctorRepository repository;
+
+    @Autowired
+    private final DoctorDetailMapper doctorDetailMapper;
+
+    @Autowired
+    private ListDoctorMapper listDoctorMapper;
 
     @Transactional
-    public Doctor create(CreateDoctorDTO dto) {
+    public DoctorDetailDTO create(CreateDoctorDTO dto) {
         var doctor = dto.toEntity();
         this.repository.save(doctor);
-        return doctor;
+        return doctorDetailMapper.apply(doctor);
     }
 
     public Page<ListDoctorDTO> list(Pageable pagination) {
-        return repository.findAllByActiveTrue(pagination).map(new ListDoctorMapper());
+        return repository.findAllByActiveTrue(pagination).map(listDoctorMapper);
     }
 
     public DoctorDetailDTO get(String doctorID) {
-        return repository.findByIdAndActiveTrue(doctorID).map(new DoctorDetailMapper())
+        return repository.findByIdAndActiveTrue(doctorID).map(doctorDetailMapper)
                 .orElseThrow(DoctorNotFoundException::new);
     }
 

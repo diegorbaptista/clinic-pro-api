@@ -27,10 +27,9 @@ public class DoctorController {
 
     @PostMapping()
     public ResponseEntity<DoctorDetailDTO> crate(@RequestBody @Valid CreateDoctorDTO data, UriComponentsBuilder uriBuilder) {
-        var doctor = this.service.create(data);
-        var uri = uriBuilder.path("/doctors/{doctorID}").buildAndExpand(doctor.getId()).toUri();
-        var detail = Optional.of(doctor).map(new DoctorDetailMapper());
-        return ResponseEntity.created(uri).body(detail.orElseThrow(DoctorNotFoundException::new));
+        var detail = this.service.create(data);
+        var uri = uriBuilder.path("/doctors/{doctorID}").buildAndExpand(detail.id()).toUri();
+        return ResponseEntity.created(uri).body(detail);
     }
 
     @GetMapping
