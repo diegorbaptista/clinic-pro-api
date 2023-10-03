@@ -1,7 +1,11 @@
 package com.clinicpro.api.infra.controllers;
 
-import com.clinicpro.api.application.dto.AuthenticationDTO;
+import com.clinicpro.api.domain.user.User;
+import com.clinicpro.api.infra.security.JSONWebTokenService;
+import com.clinicpro.api.infra.security.dto.AuthenticationDTO;
+import com.clinicpro.api.infra.security.dto.JSONWebTokenDTO;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,16 +17,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/login")
+@AllArgsConstructor
 public class AuthenticationController {
 
     @Autowired
-    private AuthenticationManager manager;
+    private final AuthenticationManager manager;
+
+    @Autowired
+    private final JSONWebTokenService service;
 
     @PostMapping
-    public ResponseEntity<String> auth(@RequestBody @Valid AuthenticationDTO data) {
-        var token = new UsernamePasswordAuthenticationToken(data.username(), data.password());
-        var authentication = manager.authenticate(token);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<JSONWebTokenDTO> auth(@RequestBody @Valid AuthenticationDTO data) {
+        var authenticationToken = new UsernamePasswordAuthenticationToken(data.username(), data.password());
+        var authentication = manager.authenticate(authenticationToken);
+        var token = this.service.createToken((User) authentication.getPrincipal());
+        return ResponseEntity.ok(token);
     }
 
 }

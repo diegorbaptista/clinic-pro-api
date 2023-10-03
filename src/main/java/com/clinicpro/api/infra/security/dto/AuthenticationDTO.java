@@ -1,4 +1,4 @@
-package com.clinicpro.api.application.dto;
+package com.clinicpro.api.infra.security.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
