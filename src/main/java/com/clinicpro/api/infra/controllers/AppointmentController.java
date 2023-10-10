@@ -4,6 +4,7 @@ package com.clinicpro.api.infra.controllers;
 import com.clinicpro.api.application.dto.appointment.AppointmentDetailDTO;
 import com.clinicpro.api.application.dto.appointment.CreateAppointmentDTO;
 import com.clinicpro.api.application.service.AppointmentService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/appointments")
+@SecurityRequirement(name = "bearer-key")
 public class AppointmentController {
 
     @Autowired

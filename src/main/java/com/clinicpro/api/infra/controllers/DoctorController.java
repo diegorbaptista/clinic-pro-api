@@ -4,9 +4,8 @@ import com.clinicpro.api.application.dto.doctor.CreateDoctorDTO;
 import com.clinicpro.api.application.dto.doctor.DoctorDetailDTO;
 import com.clinicpro.api.application.dto.doctor.ListDoctorDTO;
 import com.clinicpro.api.application.dto.doctor.UpdateDoctorDTO;
-import com.clinicpro.api.application.mapper.DoctorDetailMapper;
 import com.clinicpro.api.application.service.DoctorService;
-import com.clinicpro.api.domain.errors.DoctorNotFoundException;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +19,7 @@ import java.util.Optional;
 
 @RestController()
 @RequestMapping("/doctors")
+@SecurityRequirement(name = "bearer-key")
 public class DoctorController {
 
     @Autowired

@@ -5,6 +5,7 @@ import com.clinicpro.api.application.dto.patient.ListPatientDTO;
 import com.clinicpro.api.application.dto.patient.PatientDetailDTO;
 import com.clinicpro.api.application.dto.patient.UpdatePatientDTO;
 import com.clinicpro.api.application.service.PatientService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/patients")
+@SecurityRequirement(name = "bearer-key")
 @AllArgsConstructor
 public class PatientController {
 
