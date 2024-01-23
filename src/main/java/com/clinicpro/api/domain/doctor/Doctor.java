@@ -2,10 +2,7 @@ package com.clinicpro.api.domain.doctor;
 
 import com.clinicpro.api.domain.address.Address;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
 @AllArgsConstructor
@@ -13,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Entity(name = "doctor")
 @Table(name = "doctors")
 @EqualsAndHashCode(of= "id")
+@ToString
 public class Doctor {
 
     @Id()
